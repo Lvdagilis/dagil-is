@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kibernetinė pagalba — Lukas Dagilis</title>
+<meta name="description" content="Nemokama ar nebrangi kibernetinio saugumo pagalba individams ir mažoms įmonėms Lietuvoje.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<h1><a href="../">Lukas Dagilis</a></h1>
+<p class="headline">Kibernetinė pagalba</p>
+
+<section>
+  <h2>Apie</h2>
+  <p>
+    Kibernetinis saugumas nebūtinai turi būti bauginantis. Jei kyla klausimų
+    dėl skaitmeninio saugumo — namuose ar savo mažoje įmonėje — mielai
+    padėsiu bent atsakyti į klausimus ir nukreipti tinkama linkme.
+  </p>
+  <p>
+    Tikslas — ne išspręsti viską iš karto, o kartu pasižiūrėti, kas šiuo
+    metu kelia didžiausią riziką ar rūpestį, ir sutvarkyti bent
+    svarbiausius, minimaliausius dalykus, kad jaustumėtės saugiau.
+  </p>
+  <p class="entry-desc">Pagalba nemokama arba už simbolinę kainą — priklausomai nuo poreikio.</p>
+</section>
+
+<section>
+  <h2>Susisiekite</h2>
+  <!--
+    Same Formspree endpoint as the English contact form — replace
+    YOUR_FORM_ID in both files together. See dagil-is/SETUP.md.
+  -->
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="field">
+      <label for="name">Vardas</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="field">
+      <label for="email">El. paštas</label>
+      <input type="email" id="email" name="_replyto" required>
+    </div>
+    <div class="field">
+      <label for="message">Žinutė</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <button type="submit">Siųsti</button>
+  </form>
+</section>
+
+<p class="back-link"><a href="../">← Atgal į dagil.is</a></p>
+
+</body>
+</html>
