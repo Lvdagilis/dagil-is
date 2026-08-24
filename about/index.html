@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-accent="pink">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,79 +9,140 @@
 </head>
 <body>
 
-<h1><a href="../">Lukas Vytautas Dagilis</a></h1>
-<p class="headline">Background, Projects &amp; Publications</p>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="../">dagil<span>.is</span></a>
+    <nav class="nav-links">
+      <a href="../">Home</a>
+      <a href="./" aria-current="page">About</a>
+      <a href="../kibernetine-pagalba/">Kibernetinė pagalba</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="../#contact">Contact</a>
+  </div>
+</header>
 
-<section>
-  <h2>Experience</h2>
+<main class="wrap page">
+
+  <div class="page-head">
+    <div class="wing-field" aria-hidden="true">
+      <canvas data-wing-field="descent" data-speed="0.35" data-line-opacity="0.1" data-background="transparent"></canvas>
+    </div>
+    <span class="chip">Lukas Vytautas Dagilis</span>
+    <h1>Background, projects &amp; publications</h1>
+  </div>
+  <div class="perch"><i></i></div>
+
+  <section class="stack">
+    <h2 class="label">Experience</h2>
+
     <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">Senior Cyber Security Technical Consultant</span>
-      <span class="meta">2026-Present</span>
+      <span class="entry-year">2026–Present</span>
+      <div>
+        <div class="entry-title">Senior Cyber Security Technical Consultant</div>
+        <p class="entry-desc">Consulting on AI implementation for SOC efficiency, working with security and AI teams on AI Cyber Hygiene</p>
+      </div>
     </div>
-    <p class="entry-desc">Consulting on AI implementation for SOC efficiency, working with security and AI teams on AI Cyber Hygiene</p>
-  </div>
-  <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">Innovation &amp; Development Lead</span>
-      <span class="meta">2024-2026</span>
-    </div>
-    <p class="entry-desc">New security product &amp; tooling development — Python automation, PoC builds, on-prem LLM deployment.</p>
-  </div>
-  <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">CyberSOC Technical Product Manager</span>
-      <span class="meta">2023–2024</span>
-    </div>
-    <p class="entry-desc">Built a 24/7 SOC from scratch — scaled the team 5→20+, reached SOC-CMM Level 4, and built the full data/KPI pipeline and automation tooling behind it, saving hundreds of analyst hours a month.</p>
-  </div>
-  <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">IT Project Manager, CyberSOC</span>
-      <span class="meta">2022–2023</span>
-    </div>
-    <p class="entry-desc">Customer-facing SOC lead — SIEM management, alert analysis, CTI, and reporting.</p>
-  </div>
-</section>
 
-<section>
-  <h2>Key Projects</h2>
-  <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">SOCcare</span>
-      <span class="meta">2024–Present</span>
+    <div class="entry">
+      <span class="entry-year">2024–2026</span>
+      <div>
+        <div class="entry-title">Innovation &amp; Development Lead</div>
+        <p class="entry-desc">New security product &amp; tooling development — Python automation, PoC builds, on-prem LLM deployment.</p>
+      </div>
     </div>
-    <p class="entry-desc">EU-funded cross-border CTI project — built and led the incident response team; co-authored three peer-reviewed papers.</p>
-  </div>
-  <div class="entry">
-    <div class="entry-head">
-      <span class="entry-title">SOCshare</span>
-      <span class="meta">2023–Present</span>
+
+    <div class="entry">
+      <span class="entry-year">2023–2024</span>
+      <div>
+        <div class="entry-title">CyberSOC Technical Product Manager</div>
+        <p class="entry-desc">Built a 24/7 SOC from scratch — scaled the team 5→20+, reached SOC-CMM Level 4, and built the full data/KPI pipeline and automation tooling behind it, saving hundreds of analyst hours a month.</p>
+      </div>
     </div>
-    <p class="entry-desc">EU-funded national capability project — strengthened Lithuania's two largest SOCs and launched a public CTI-sharing community with an open MISP instance.</p>
+
+    <div class="entry">
+      <span class="entry-year">2022–2023</span>
+      <div>
+        <div class="entry-title">IT Project Manager, CyberSOC</div>
+        <p class="entry-desc">Customer-facing SOC lead — SIEM management, alert analysis, CTI, and reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2 class="label">Key projects</h2>
+
+    <div class="entry">
+      <span class="entry-year">2024–Present</span>
+      <div>
+        <div class="entry-title">SOCcare</div>
+        <p class="entry-desc">EU-funded cross-border CTI project — built and led the incident response team; co-authored three peer-reviewed papers.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2023–Present</span>
+      <div>
+        <div class="entry-title">SOCshare</div>
+        <p class="entry-desc">EU-funded national capability project — strengthened Lithuania's two largest SOCs and launched a public CTI-sharing community with an open MISP instance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2 class="label">Publications</h2>
+
+    <div class="entry">
+      <span class="entry-year">2025</span>
+      <div class="entry-title">"From Incident to IOC — An Automated Malware Investigation Pipeline"</div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2025</span>
+      <div class="entry-title">"Metadata-Based Network Traffic Analysis Using Zeek"</div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2024</span>
+      <div class="entry-title">"Cowrie SSH Honeypot: Architecture, Improvements and Data Visualization"</div>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2 class="label">Talks &amp; conferences</h2>
+
+    <div class="entry">
+      <span class="entry-year">2026</span>
+      <div class="entry-title">"From Incident to IOC — An Automated Malware Investigation Pipeline" @ "Kibernetinio saugumo diena: sprendimai saugiai ateičiai" - Vilnius, Lithuania</div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2024</span>
+      <div class="entry-title">"You Just got a CTI program Funded - Now what?" @ HACK.LU 2024, Luxembourg"</div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2024</span>
+      <div class="entry-title">"„Kibernetinių grėsmių žvalgyba: lūkestis vs realybė“ @ Kibernetinis Atsparumas 2024 - Vilnius, Lithuania</div>
+    </div>
+
+    <div class="entry">
+      <span class="entry-year">2024</span>
+      <div class="entry-title">"„The Evolution of the SOC market in Lithuania" @ RigaCOMM - Riga, Latvia</div>
+    </div>
+  </section>
+
+  <p class="page-foot"><a class="btn" href="../">← Back home</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="wordmark wordmark--mono">dagil<span>.is</span></span>
+    <span class="spacer"></span>
+    <span>Vilnius, Lithuania</span>
   </div>
-</section>
+</footer>
 
-<section>
-  <h2>Publications</h2>
-  <ul class="plain-list">
-    <li><span>"From Incident to IOC — An Automated Malware Investigation Pipeline"</span><span class="meta">2025</span></li>
-    <li><span>"Metadata-Based Network Traffic Analysis Using Zeek"</span><span class="meta">2025</span></li>
-    <li><span>"Cowrie SSH Honeypot: Architecture, Improvements and Data Visualization"</span><span class="meta">2024</span></li>
-  </ul>
-</section>
-
-<section>
-  <h2>Talks &amp; Conferences</h2>
-  <ul class="plain-list">
-    <li><span>"From Incident to IOC — An Automated Malware Investigation Pipeline" @ "Kibernetinio saugumo diena: sprendimai saugiai ateičiai" - Vilnius, Lithuania</span><span class="meta">2026</span></li>
-    <li><span>"You Just got a CTI program Funded - Now what?" @ HACK.LU 2024, Luxembourg"</span><span class="meta">2024</span></li>
-    <li><span>"„Kibernetinių grėsmių žvalgyba: lūkestis vs realybė“ @ Kibernetinis Atsparumas 2024 - Vilnius, Lithuania</span><span class="meta">2024</span></li>
-    <li><span>"„The Evolution of the SOC market in Lithuania" @ RigaCOMM - Riga, Latvia</span><span class="meta">2024</span></li>
-  </ul>
-</section>
-
-<p class="back-link"><a href="../">← Back home</a></p>
-
+<script src="../wing-field.js" defer></script>
 </body>
 </html>

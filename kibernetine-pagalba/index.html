@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="lt" data-accent="pink">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,46 +9,80 @@
 </head>
 <body>
 
-<h1><a href="../">Lukas Vytautas Dagilis</a></h1>
-<p class="headline">Kibernetinė pagalba</p>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="../">dagil<span>.is</span></a>
+    <nav class="nav-links">
+      <a href="../">Pradžia</a>
+      <a href="../about/">Apie mane</a>
+      <a href="./" aria-current="page">Kibernetinė pagalba</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#susisiekite">Susisiekite</a>
+  </div>
+</header>
 
-<section>
-  <h2>Apie</h2>
-  <p>
-    Kibernetinis saugumas nebūtinai turi būti bauginantis. Jei kyla klausimų
-    dėl skaitmeninio saugumo — namuose ar savo mažoje įmonėje — mielai
-    padėsiu bent atsakyti į klausimus ir nukreipti tinkama linkme.
-  </p>
-  <p>
-    Tikslas — ne išspręsti viską iš karto, o kartu pasižiūrėti, kas šiuo
-    metu kelia didžiausią riziką ar rūpestį, ir sutvarkyti bent
-    svarbiausius, minimaliausius dalykus, kad jaustumėtės saugiau.
-  </p>
-  <p class="entry-desc">Pagalba nemokama arba už simbolinę kainą — priklausomai nuo poreikio.</p>
-</section>
+<main class="wrap page">
 
-<section>
-  <h2>Susisiekite</h2>
-
-  <form action="https://formspree.io/f/xaqgkaaq" method="POST">
-    <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="field">
-      <label for="name">Vardas</label>
-      <input type="text" id="name" name="name" required>
+  <div class="page-head">
+    <div class="wing-field" aria-hidden="true">
+      <canvas data-wing-field="right-edge" data-speed="0.35" data-line-opacity="0.1" data-background="transparent"></canvas>
     </div>
-    <div class="field">
-      <label for="email">El. paštas</label>
-      <input type="email" id="email" name="_replyto" required>
-    </div>
-    <div class="field">
-      <label for="message">Žinutė</label>
-      <textarea id="message" name="message" required></textarea>
-    </div>
-    <button type="submit">Siųsti</button>
-  </form>
-</section>
+    <span class="chip">lt</span>
+    <h1>Kibernetinė pagalba</h1>
+    <p class="lead">
+      Kibernetinis saugumas nebūtinai turi būti bauginantis. Jei kyla klausimų
+      dėl skaitmeninio saugumo — namuose ar savo mažoje įmonėje — mielai
+      padėsiu bent atsakyti į klausimus ir nukreipti tinkama linkme.
+    </p>
+  </div>
+  <div class="perch"><i></i></div>
 
-<p class="back-link"><a href="../">← Atgal į dagil.is</a></p>
+  <div class="grid-2">
 
+    <div class="card card--accent">
+      <h4 class="subhead">Apie</h4>
+      <p>
+        Tikslas — ne išspręsti viską iš karto, o kartu pasižiūrėti, kas šiuo
+        metu kelia didžiausią riziką ar rūpestį, ir sutvarkyti bent
+        svarbiausius, minimaliausius dalykus, kad jaustumėtės saugiau.
+      </p>
+      <p class="entry-desc">Pagalba nemokama arba už simbolinę kainą — priklausomai nuo poreikio.</p>
+    </div>
+
+    <div class="card" id="susisiekite">
+      <h4 class="subhead">Susisiekite</h4>
+      <form class="form" action="https://formspree.io/f/xaqgkaaq" method="POST">
+        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field">
+          <label for="name">Vardas</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">El. paštas</label>
+          <input type="email" id="email" name="_replyto" required>
+        </div>
+        <div class="field">
+          <label for="message">Žinutė</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div><button class="btn btn--primary" type="submit">Siųsti</button></div>
+      </form>
+    </div>
+
+  </div>
+
+  <p class="page-foot"><a class="btn" href="../">← Atgal į dagil.is</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="wordmark wordmark--mono">dagil<span>.is</span></span>
+    <span class="spacer"></span>
+    <span>Vilnius, Lietuva</span>
+  </div>
+</footer>
+
+<script src="../wing-field.js" defer></script>
 </body>
 </html>
