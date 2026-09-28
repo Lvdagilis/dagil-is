@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="pink">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI system audit &amp; red teaming — Lukas Vytautas Dagilis</title>
+<meta name="description" content="AI system audit and red teaming: governance review, adversarial testing and a defensible EU AI Act classification in one engagement.">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* Page-specific components on top of style.css: the value list, the phase rows,
+   the area grid, the rule list and the contact block — plus a print scope that
+   lays the whole page out on one A4 sheet in the design system's light palette. */
+
+.hero h1 { max-width: 16ch; }
+.hero .lead { margin-top: var(--space-5); max-width: 58ch; }
+
+/* Value list: hairlines from a 1px grid gap, as in .service-list. */
+.value-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); }
+.value-list li { background: var(--void); padding: var(--space-3) 0; display: grid; gap: var(--space-1); }
+.value-head { color: var(--text-1); font-size: var(--text-md); }
+.value-desc { color: var(--text-3); font-size: var(--text-sm); max-width: none; }
+
+/* Phases: mono number in the left column, prose in the right. A real sequence. */
+.phase { display: grid; grid-template-columns: 56px 1fr; gap: var(--space-5); border-top: 1px solid var(--line); padding: var(--space-4) 0; }
+.phase:first-child { border-top: none; padding-top: 0; }
+.phase-num { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-mono); color: var(--accent); padding-top: 0.35rem; }
+.phase-title { color: var(--text-1); font-size: var(--text-md); font-family: var(--font-display); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); }
+.phase p { margin-top: var(--space-1); color: var(--text-2); max-width: none; }
+.phase-note { color: var(--text-3); font-size: var(--text-sm); }
+
+/* Area grid: eight audit areas, two columns, hairline above each. */
+.area-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 var(--space-6); }
+.area-grid li { border-top: 1px solid var(--line); padding: var(--space-3) 0; color: var(--text-1); }
+.area-grid li small { display: block; color: var(--text-3); font-size: var(--text-sm); margin-top: 2px; }
+
+/* Rules: the card with a hairline on one edge and space. */
+.rule-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.rule-list li { border-left: 1px solid var(--line); padding-left: var(--space-5); }
+.rule-list li strong { display: block; margin-bottom: 2px; }
+.rule-list li.rule--accent { border-left-color: var(--accent); }
+
+/* Contact block beside the who-list. The address is selectable text. */
+.contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-6); align-items: start; }
+.contact { display: grid; gap: var(--space-2); }
+.contact .addr { font-family: var(--font-mono); font-size: var(--text-md); color: var(--text-1); letter-spacing: var(--tracking-mono); }
+.contact .meta { color: var(--text-3); font-size: var(--text-sm); }
+.contact .hero-actions { margin-top: var(--space-4); }
+
+@media (max-width: 760px) {
+  .area-grid, .contact-grid { grid-template-columns: 1fr; }
+  .phase { grid-template-columns: 40px 1fr; gap: var(--space-4); }
+}
+
+/* Print: the system's light scope, compacted to one A4 sheet. */
+@media print {
+  @page { size: A4; margin: 9mm 10mm; }
+  :root {
+    color-scheme: light;
+    --void: oklch(100% 0 0);
+    --surface-3: oklch(92% 0.006 285);
+    --text-1: oklch(17% 0.008 285);
+    --text-2: oklch(34% 0.008 285);
+    --text-3: oklch(48% 0.008 285);
+    --line: oklch(84% 0.005 285);
+    --line-strong: oklch(66% 0.008 285);
+    --accent: oklch(56% 0.245 350);
+    --accent-strong: oklch(48% 0.235 350);
+    --accent-ink: oklch(99% 0 0);
+    --accent-line: color-mix(in oklab, var(--accent) 45%, white);
+    --goldfinch-wing: oklch(78% 0.170 92);
+    --text-xs: 6.2pt; --text-sm: 6.7pt; --text-base: 7.2pt; --text-md: 7.9pt; --text-lg: 9.5pt;
+    --leading-normal: 1.35;
+    --space-3: 0.3rem; --space-4: 0.45rem; --space-5: 0.6rem; --space-6: 0.9rem; --space-7: 0.8rem; --space-8: 1rem; --space-9: 1rem;
+    --content-max: none; --gutter: 0;
+  }
+  html, body { background: white; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; zoom: 0.88; }
+  p { max-width: none; }
+  .nav { position: static; border-bottom: none; }
+  .nav-inner { padding-inline: 0; padding-block: 0 var(--space-3); }
+  .nav-links, .nav-inner .btn, .wing-field, .hero-actions, .hero-foot, .btn, .perch { display: none; }
+  .hero { padding: var(--space-3) 0 var(--space-4); }
+  .hero h1 { font-size: 19pt; max-width: none; }
+  .hero .lead { margin-top: var(--space-3); max-width: 90ch; }
+  .hero-eyebrow { margin-bottom: var(--space-3); }
+  .section { padding: var(--space-3) 0; break-inside: avoid; }
+  .section-body > * + * { margin-top: var(--space-3); }
+  .section-title { margin-top: var(--space-1); font-size: 8.5pt; }
+  .print-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-6);
+    grid-template-areas: "why value" "performed areas" "performed frameworks" "how contact";
+    border-top: 1px solid var(--line);
+  }
+  #why { grid-area: why; } #value { grid-area: value; } #performed { grid-area: performed; }
+  #areas { grid-area: areas; } #frameworks { grid-area: frameworks; } #how { grid-area: how; } #contact { grid-area: contact; }
+  .print-grid .section { border-top: none; border-bottom: 1px solid var(--line); }
+  #how, #contact { border-bottom: none; }
+  .print-grid .section-grid { grid-template-columns: 1fr; gap: var(--space-2); }
+  .area-grid li { padding: 0.2rem 0; }
+  .area-grid li small { font-size: 6.4pt; }
+  .phase { grid-template-columns: 24px 1fr; gap: var(--space-3); padding: var(--space-2) 0; }
+  .value-list li { padding: 0.25rem 0; }
+  .rule-list { gap: var(--space-2); }
+  .rule-list li { padding-left: var(--space-3); }
+  .contact-grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .footer { margin-top: var(--space-4); }
+  .footer-inner { padding: var(--space-3) 0 0; }
+  .footer-inner p { flex-basis: 100%; margin: 0; }
+  a { border-bottom: none; color: inherit; }
+}
+.footer-inner p { flex-basis: 100%; margin: 0; max-width: none; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="../">dagil<span>.is</span></a>
+    <nav class="nav-links">
+      <a href="../">Home</a>
+      <a href="../about/">About</a>
+      <a href="./" aria-current="page">AI audit</a>
+      <a href="../kibernetine-pagalba/">Kibernetinė pagalba</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="../#contact">Contact</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="wing-field" aria-hidden="true">
+      <canvas data-wing-field="title" data-speed="0.35" data-line-opacity="0.1" data-background="transparent"></canvas>
+    </div>
+    <p class="label hero-eyebrow">Lukas Vytautas Dagilis · AI security</p>
+    <h1>AI systems, audited as systems.</h1>
+    <p class="lead">
+      Governance review, adversarial testing and a defensible EU AI Act classification
+      in one engagement. For teams putting language models, assistants and agents into
+      production, and for the people who have to answer for them.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn--primary btn--lg" href="../#contact">Start a conversation</a>
+      <a class="btn btn--lg" href="https://auditai.dagil.is">Try the audit tool →</a>
+    </div>
+    <div class="hero-foot">
+      <span class="footnote">dagilis · carduelis carduelis · goldfinch</span>
+    </div>
+  </div>
+
+  <div class="wingbar" aria-hidden="true"></div>
+
+  <div class="print-grid">
+
+  <section class="section" id="why">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">Why</h2>
+        <h3 class="section-title">Most AI reviews stop halfway</h3>
+      </div>
+      <div class="section-body">
+        <p>
+          A compliance review reads the policies, the risk register and the model card,
+          and never sends a request to the running system. A penetration test sends
+          thousands, and never reads the documents that say what the system is for and
+          who is accountable for it. Compliance frameworks tell you what to document.
+          Threat frameworks tell you what breaks.
+        </p>
+        <p>
+          AI systems fail in the gap between the two: a human-oversight step that is
+          documented and never exercised, a retrieved document that turns into an
+          instruction, an agent tool whose description quietly redefines what it does.
+          This engagement covers both halves against the same system and produces one
+          set of findings.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="value">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">What you get</h2>
+        <h3 class="section-title">Evidence, not assertions</h3>
+      </div>
+      <div class="section-body">
+        <ul class="value-list">
+          <li>
+            <span class="value-head">A defensible EU AI Act role and risk classification</span>
+            <span class="value-desc">Provider or deployer, which risk class, and the reasoning written down. Get this wrong and every downstream conclusion is wrong.</span>
+          </li>
+          <li>
+            <span class="value-head">Findings you can show, not findings you were told</span>
+            <span class="value-desc">Each one quotes what substantiates it: a reproducible payload, a measured rate, a document reference. A finding survives the vendor disputing it.</span>
+          </li>
+          <li>
+            <span class="value-head">A gap register in the vocabulary your regulator, customer or board uses</span>
+            <span class="value-desc">Every gap mapped to the specific framework reference, prioritised by impact.</span>
+          </li>
+          <li>
+            <span class="value-head">A remediation roadmap with owners, dates and a re-test</span>
+            <span class="value-desc">Handed over as a tracker, so a fix is closed by verification rather than by an email saying it is fixed.</span>
+          </li>
+          <li>
+            <span class="value-head">The evidence pack a due-diligence questionnaire asks for</span>
+            <span class="value-desc">Including a methodology and limitations statement that says plainly what was tested, what was not, and why.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="performed">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">What is performed</h2>
+        <h3 class="section-title">Four phases, one system</h3>
+      </div>
+      <div class="section-body">
+        <div class="phase-list">
+          <div class="phase">
+            <span class="phase-num">01</span>
+            <div>
+              <div class="phase-title">Scoping and classification</div>
+              <p>Your role under the EU AI Act, the risk class, the system boundary and the trust boundaries inside it. An agreed evidence list and written rules of engagement before anything is sent.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <span class="phase-num">02</span>
+            <div>
+              <div class="phase-title">Governance and documentation review</div>
+              <p>Policies, risk register, technical documentation, data flows and transfers, human-oversight design. Read, then sampled: a register where nothing ever closes is not in use.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <span class="phase-num">03</span>
+            <div>
+              <div class="phase-title">Technical and adversarial testing</div>
+              <p>Red teaming with real payloads: instructions planted in documents and files, data extraction, tool misuse, memory poisoned in one session and recalled in the next. Infrastructure checks no prompt reaches: egress, tenant isolation, rate limits, tool allowlists, confirmation gates. The tool servers an agent trusts, and the models and artefacts in its supply chain. Where the system decides about people, outcome analysis across groups.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <span class="phase-num">04</span>
+            <div>
+              <div class="phase-title">Reporting and re-test</div>
+              <p>Findings with severity, owner and date. A statement of what was tested and what was not. A re-test once the fixes land.</p>
+            </div>
+          </div>
+        </div>
+        <p class="phase-note">Phases 1 and 2 are document work. Phase 3 is where most findings come from.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="areas">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">The whole system</h2>
+        <h3 class="section-title">Eight areas, every engagement</h3>
+      </div>
+      <div class="section-body">
+        <p>
+          Whether the system is an assistant on a website or an agent holding credentials,
+          the same eight areas are examined. Most findings sit at the trust boundaries:
+          every point where data or instructions cross from one level of trust to another.
+        </p>
+        <ul class="area-grid">
+          <li>Governance and accountability <small>Someone with the authority to stop it</small></li>
+          <li>Data governance and transfers <small>Where prompts and payloads physically go</small></li>
+          <li>Model lifecycle <small>Versioning, acceptance criteria, re-validation on change</small></li>
+          <li>Trust-boundary enforcement <small>Instruction and data kept apart, at every crossing</small></li>
+          <li>Access control and secrets <small>Who can reach the model, the data and the weights</small></li>
+          <li>Supply chain <small>Third-party models, datasets, tools and the servers behind them</small></li>
+          <li>Monitoring and incident response <small>Drift, abuse, forensic logging, a kill switch</small></li>
+          <li>Transparency and human oversight <small>Disclosure, explanation, genuine override</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="frameworks">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">Frameworks</h2>
+        <h3 class="section-title">Seven vocabularies, one register</h3>
+      </div>
+      <div class="section-body">
+        <div class="chip-row">
+          <span class="chip chip--boxed chip--accent">EU AI Act</span>
+          <span class="chip chip--boxed">NIST AI RMF</span>
+          <span class="chip chip--boxed">NIST AI 600-1</span>
+          <span class="chip chip--boxed">ISO/IEC 42001</span>
+          <span class="chip chip--boxed">MITRE ATLAS</span>
+          <span class="chip chip--boxed">OWASP LLM Top 10</span>
+          <span class="chip chip--boxed">OWASP Agentic Top 10</span>
+        </div>
+        <p>
+          Every finding cites the reference it maps to, so the same register answers a
+          regulator, a customer's questionnaire and your own security team. These are the
+          vocabularies the findings are expressed in, not a claim of certification against them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">How it is run</h2>
+        <h3 class="section-title">Plainly, and in writing</h3>
+      </div>
+      <div class="section-body">
+        <ul class="rule-list">
+          <li class="rule--accent"><strong>Nothing is sent before it is authorised.</strong> Written rules of engagement name the systems, the testing window and the signatory. The tooling refuses anything outside them.</li>
+          <li><strong>Your assessment stays yours.</strong> The audit tool runs entirely in the browser, with no backend and no account. It is public at <a href="https://auditai.dagil.is">auditai.dagil.is</a>, and your security team can host it inside your own perimeter.</li>
+          <li><strong>Findings go to you and nowhere else.</strong> Everything seen or produced is covered by the engagement's confidentiality terms.</li>
+          <li><strong>AI assistance is disclosed.</strong> Drafting uses AI assistance. Every finding and every conclusion is reviewed and approved by me before delivery.</li>
+          <li><strong>One person, answering plainly.</strong> I will tell you when I am not the right person for the job.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-grid">
+      <div class="section-head">
+        <h2 class="label">Who it is for</h2>
+        <h3 class="section-title">Start with a conversation</h3>
+      </div>
+      <div class="section-body">
+        <div class="contact-grid">
+          <ul class="rule-list">
+            <li>Teams shipping a language-model feature, a retrieval assistant or an agent with tools, who want to know what holds before a customer or an attacker finds out.</li>
+            <li>Organisations deploying AI in employment, credit, education or essential services, where the EU AI Act's high-risk obligations apply.</li>
+            <li>Vendors answering a customer's AI due-diligence questionnaire with evidence instead of assurances.</li>
+          </ul>
+          <div class="contact">
+            <p>Scope, access and timeline are agreed in writing before any work begins.</p>
+            <span class="addr">info@dagil.is</span>
+            <span class="meta">Lukas Vytautas Dagilis · Vilnius, Lithuania</span>
+            <div class="hero-actions"><a class="btn btn--primary" href="../#contact">Write to me</a></div>
+          </div>
+        </div>
+        <div class="perch"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="wordmark wordmark--mono">dagil<span>.is</span></span>
+    <span class="spacer"></span>
+    <a href="../privacy/">Privacy</a>
+    <span>Vilnius, Lithuania</span>
+    <p>Informational. Not legal advice and not a conformity assessment under Regulation (EU) 2024/1689.</p>
+  </div>
+</footer>
+
+<script src="../wing-field.js" defer></script>
+</body>
+</html>
