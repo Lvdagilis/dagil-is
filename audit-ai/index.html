@@ -70,8 +70,7 @@
   .rule-list { gap: var(--space-2); }
   .rule-list li { padding-left: var(--space-3); }
   .contact-grid { grid-template-columns: 1fr; gap: var(--space-3); }
-  .contact-form .form, .contact-form .footnote { display: none; }
-  .print-only { display: block; }
+  .contact-form .form { display: none; }
   .print-addr { font-family: var(--font-mono); font-size: var(--text-md); color: var(--text-1); letter-spacing: var(--tracking-mono); }
   .footer { margin-top: var(--space-4); }
   .footer-inner { padding: var(--space-3) 0 0; }
@@ -303,9 +302,9 @@
             <li>Teams shipping a language-model feature, a retrieval assistant or an agent with tools, who want to know what holds before a customer or an attacker finds out.</li>
             <li>Organisations deploying AI in employment, credit, education or essential services, where the EU AI Act's high-risk obligations apply.</li>
             <li>Vendors answering a customer's AI due-diligence questionnaire with evidence instead of assurances.</li>
-            <li class="rule--accent">Scope, access and timeline are agreed in writing before any work begins. Tell me what the system does and where it runs, and I will reply with a proposed scope.</li>
           </ul>
           <div class="contact-form">
+            <p>Scope, access and timeline are agreed in writing before any work begins. Tell me what the system does and where it runs, and I will reply with a proposed scope.</p>
             <form class="form" action="https://formspree.io/f/xaqgkaaq" method="POST">
               <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
               <input type="hidden" name="_subject" value="AI audit enquiry via dagil.is">
@@ -318,7 +317,7 @@
                 <input type="email" id="email" name="_replyto" required>
               </div>
               <div class="field">
-                <label for="message">What are you shipping, and where does it run?</label>
+                <label for="message">Message</label>
                 <textarea id="message" name="message" required></textarea>
               </div>
               <p class="footnote">Your name, email and message go to me and to Formspree, who deliver the form. Nothing else is collected. See the <a href="../privacy/">privacy notice</a>.</p>
@@ -326,7 +325,7 @@
             </form>
             <div class="print-only">
               <span class="print-addr">dagil.is/audit-ai</span>
-              <p class="phase-note">Write through the form on this page. Lukas Vytautas Dagilis · Vilnius, Lithuania.</p>
+              <p><small>The contact form at this address reaches me directly. Lukas Vytautas Dagilis · Vilnius, Lithuania.</small></p>
             </div>
           </div>
         </div>

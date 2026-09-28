@@ -468,6 +468,7 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
 /* Screen/print pairs. Print-only content is the fallback for things that
    need a browser (the form); it stays out of the screen layout entirely. */
 .print-only { display: none; }
+@media print { .print-only { display: block; } }
 
 /* Value list — hairlines from a 1px grid gap, as .service-list, with a
    second line of explanation under each row. */
@@ -541,29 +542,19 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
   align-items: start;
 }
 
-/* Feature band — the one section on a page allowed to break the column
-   grid. It sits on the raised surface, full bleed, under the WingBar, with
-   the pitch on the left and three points on the right. Its buttons are the
-   page's main call to action; everything else on the page stays quiet. */
-.feature { position: relative; padding: var(--space-8) 0; }
-.feature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: var(--bleed, 100vw);
-  transform: translateX(-50%);
-  background: var(--surface-1);
-  border-bottom: 1px solid var(--line);
-}
-.feature > * { position: relative; }
+/* Feature — the page's one call to action, directly under the WingBar. It
+   leaves the label-column grid for a pitch beside a point list, carries the
+   goldfinch face as its emphasis mark (the single vertical bar the system
+   allows), and holds the page's one filled button. Background stays the
+   void: the WingBar, the bar and the button do the highlighting. */
+.feature { padding: var(--space-8) 0; }
 .feature-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: var(--space-7);
   align-items: start;
 }
+.feature-pitch { border-left: 2px solid var(--goldfinch-face); padding-left: var(--space-5); }
 .feature-title {
   margin-top: var(--space-4);
   font-size: clamp(1.9rem, 3.6vw, var(--display-md));
@@ -571,7 +562,6 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
 }
 .feature .lead { margin-top: var(--space-5); max-width: 48ch; }
 .feature .hero-actions { margin-top: var(--space-6); }
-.feature .footnote { display: block; margin-top: var(--space-4); }
 .feature-points {
   list-style: none;
   margin: 0;
@@ -579,16 +569,9 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
   display: grid;
   gap: 1px;
   background: var(--line);
-  border-top: 1px solid var(--accent);
+  border-top: 1px solid var(--line-strong);
 }
-.feature-points li {
-  background: var(--surface-1);
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: var(--space-4);
-  padding: var(--space-4) 0;
-}
-.feature-points .phase-num { padding-top: 0.25rem; }
+.feature-points li { background: var(--void); padding: var(--space-4) 0; }
 .feature-points strong { display: block; font-family: var(--font-display); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); font-size: var(--text-md); }
 .feature-points p { margin: var(--space-1) 0 0; color: var(--text-3); font-size: var(--text-sm); max-width: none; }
 
