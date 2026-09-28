@@ -7,49 +7,16 @@
 <meta name="description" content="AI system audit and red teaming: governance review, adversarial testing and a defensible EU AI Act classification in one engagement.">
 <link rel="stylesheet" href="../style.css">
 <style>
-/* Page-specific components on top of style.css: the value list, the phase rows,
-   the area grid, the rule list and the contact block — plus a print scope that
-   lays the whole page out on one A4 sheet in the design system's light palette. */
+/* The components (value list, phase rows, area grid, rule list, contact grid)
+   live in style.css. Kept here: the hero measure, the contact column, and a
+   print scope that lays the whole page out on one A4 sheet in the design
+   system's light palette, with the site address standing in for the form. */
 
 .hero h1 { max-width: 16ch; }
 .hero .lead { margin-top: var(--space-5); max-width: 58ch; }
 
-/* Value list: hairlines from a 1px grid gap, as in .service-list. */
-.value-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); }
-.value-list li { background: var(--void); padding: var(--space-3) 0; display: grid; gap: var(--space-1); }
-.value-head { color: var(--text-1); font-size: var(--text-md); }
-.value-desc { color: var(--text-3); font-size: var(--text-sm); max-width: none; }
-
-/* Phases: mono number in the left column, prose in the right. A real sequence. */
-.phase { display: grid; grid-template-columns: 56px 1fr; gap: var(--space-5); border-top: 1px solid var(--line); padding: var(--space-4) 0; }
-.phase:first-child { border-top: none; padding-top: 0; }
-.phase-num { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-mono); color: var(--accent); padding-top: 0.35rem; }
-.phase-title { color: var(--text-1); font-size: var(--text-md); font-family: var(--font-display); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); }
-.phase p { margin-top: var(--space-1); color: var(--text-2); max-width: none; }
-.phase-note { color: var(--text-3); font-size: var(--text-sm); }
-
-/* Area grid: eight audit areas, two columns, hairline above each. */
-.area-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 var(--space-6); }
-.area-grid li { border-top: 1px solid var(--line); padding: var(--space-3) 0; color: var(--text-1); }
-.area-grid li small { display: block; color: var(--text-3); font-size: var(--text-sm); margin-top: 2px; }
-
-/* Rules: the card with a hairline on one edge and space. */
-.rule-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
-.rule-list li { border-left: 1px solid var(--line); padding-left: var(--space-5); }
-.rule-list li strong { display: block; margin-bottom: 2px; }
-.rule-list li.rule--accent { border-left-color: var(--accent); }
-
-/* Contact block beside the who-list. The address is selectable text. */
-.contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-6); align-items: start; }
-.contact { display: grid; gap: var(--space-2); }
-.contact .addr { font-family: var(--font-mono); font-size: var(--text-md); color: var(--text-1); letter-spacing: var(--tracking-mono); }
-.contact .meta { color: var(--text-3); font-size: var(--text-sm); }
-.contact .hero-actions { margin-top: var(--space-4); }
-
-@media (max-width: 760px) {
-  .area-grid, .contact-grid { grid-template-columns: 1fr; }
-  .phase { grid-template-columns: 40px 1fr; gap: var(--space-4); }
-}
+.contact-form { display: grid; gap: var(--space-4); }
+.contact-form .form { max-width: none; }
 
 /* Print: the system's light scope, compacted to one A4 sheet. */
 @media print {
@@ -103,6 +70,9 @@
   .rule-list { gap: var(--space-2); }
   .rule-list li { padding-left: var(--space-3); }
   .contact-grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .contact-form .form, .contact-form .footnote { display: none; }
+  .print-only { display: block; }
+  .print-addr { font-family: var(--font-mono); font-size: var(--text-md); color: var(--text-1); letter-spacing: var(--tracking-mono); }
   .footer { margin-top: var(--space-4); }
   .footer-inner { padding: var(--space-3) 0 0; }
   .footer-inner p { flex-basis: 100%; margin: 0; }
@@ -122,7 +92,7 @@
       <a href="./" aria-current="page">AI audit</a>
       <a href="../kibernetine-pagalba/">Kibernetinė pagalba</a>
     </nav>
-    <a class="btn btn--primary btn--sm" href="../#contact">Contact</a>
+    <a class="btn btn--primary btn--sm" href="#contact">Contact</a>
   </div>
 </header>
 
@@ -140,7 +110,7 @@
       production, and for the people who have to answer for them.
     </p>
     <div class="hero-actions">
-      <a class="btn btn--primary btn--lg" href="../#contact">Start a conversation</a>
+      <a class="btn btn--primary btn--lg" href="#contact">Start a conversation</a>
       <a class="btn btn--lg" href="https://auditai.dagil.is">Try the audit tool →</a>
     </div>
     <div class="hero-foot">
@@ -333,12 +303,31 @@
             <li>Teams shipping a language-model feature, a retrieval assistant or an agent with tools, who want to know what holds before a customer or an attacker finds out.</li>
             <li>Organisations deploying AI in employment, credit, education or essential services, where the EU AI Act's high-risk obligations apply.</li>
             <li>Vendors answering a customer's AI due-diligence questionnaire with evidence instead of assurances.</li>
+            <li class="rule--accent">Scope, access and timeline are agreed in writing before any work begins. Tell me what the system does and where it runs, and I will reply with a proposed scope.</li>
           </ul>
-          <div class="contact">
-            <p>Scope, access and timeline are agreed in writing before any work begins.</p>
-            <span class="addr">info@dagil.is</span>
-            <span class="meta">Lukas Vytautas Dagilis · Vilnius, Lithuania</span>
-            <div class="hero-actions"><a class="btn btn--primary" href="../#contact">Write to me</a></div>
+          <div class="contact-form">
+            <form class="form" action="https://formspree.io/f/xaqgkaaq" method="POST">
+              <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="hidden" name="_subject" value="AI audit enquiry via dagil.is">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="_replyto" required>
+              </div>
+              <div class="field">
+                <label for="message">What are you shipping, and where does it run?</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <p class="footnote">Your name, email and message go to me and to Formspree, who deliver the form. Nothing else is collected. See the <a href="../privacy/">privacy notice</a>.</p>
+              <div><button class="btn btn--primary" type="submit">Send</button></div>
+            </form>
+            <div class="print-only">
+              <span class="print-addr">dagil.is/audit-ai</span>
+              <p class="phase-note">Write through the form on this page. Lukas Vytautas Dagilis · Vilnius, Lithuania.</p>
+            </div>
           </div>
         </div>
         <div class="perch"><i></i></div>

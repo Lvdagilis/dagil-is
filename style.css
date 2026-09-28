@@ -465,6 +465,133 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
 
 .honeypot { position: absolute; left: -9999px; top: -9999px; }
 
+/* Screen/print pairs. Print-only content is the fallback for things that
+   need a browser (the form); it stays out of the screen layout entirely. */
+.print-only { display: none; }
+
+/* Value list — hairlines from a 1px grid gap, as .service-list, with a
+   second line of explanation under each row. */
+.value-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+.value-list li {
+  background: var(--void);
+  padding: var(--space-3) 0;
+  display: grid;
+  gap: var(--space-1);
+}
+.value-head { color: var(--text-1); font-size: var(--text-md); }
+.value-desc { color: var(--text-3); font-size: var(--text-sm); max-width: none; }
+
+/* Phase rows — mono number in the left column, prose in the right. A real
+   sequence, so the number is in the accent. */
+.phase {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-5);
+  border-top: 1px solid var(--line);
+  padding: var(--space-4) 0;
+}
+.phase:first-child { border-top: none; padding-top: 0; }
+.phase-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--accent);
+  padding-top: 0.35rem;
+}
+.phase-title {
+  color: var(--text-1);
+  font-size: var(--text-md);
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tight);
+}
+.phase p { margin-top: var(--space-1); color: var(--text-2); max-width: none; }
+.phase-note { color: var(--text-3); font-size: var(--text-sm); }
+
+/* Area grid — two columns of hairline rows, each with a one-line gloss. */
+.area-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--space-6);
+}
+.area-grid li { border-top: 1px solid var(--line); padding: var(--space-3) 0; color: var(--text-1); }
+.area-grid li small { display: block; color: var(--text-3); font-size: var(--text-sm); margin-top: 2px; }
+
+/* Rule list — a stack of left-edge cards; one may carry the accent. */
+.rule-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.rule-list li { border-left: 1px solid var(--line); padding-left: var(--space-5); }
+.rule-list li strong { display: block; margin-bottom: 2px; }
+.rule-list li.rule--accent { border-left-color: var(--accent); }
+
+/* Contact grid — the who-list beside the form. */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* Feature band — the one section on a page allowed to break the column
+   grid. It sits on the raised surface, full bleed, under the WingBar, with
+   the pitch on the left and three points on the right. Its buttons are the
+   page's main call to action; everything else on the page stays quiet. */
+.feature { position: relative; padding: var(--space-8) 0; }
+.feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--bleed, 100vw);
+  transform: translateX(-50%);
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--line);
+}
+.feature > * { position: relative; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+.feature-title {
+  margin-top: var(--space-4);
+  font-size: clamp(1.9rem, 3.6vw, var(--display-md));
+  max-width: 16ch;
+}
+.feature .lead { margin-top: var(--space-5); max-width: 48ch; }
+.feature .hero-actions { margin-top: var(--space-6); }
+.feature .footnote { display: block; margin-top: var(--space-4); }
+.feature-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--accent);
+}
+.feature-points li {
+  background: var(--surface-1);
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+}
+.feature-points .phase-num { padding-top: 0.25rem; }
+.feature-points strong { display: block; font-family: var(--font-display); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); font-size: var(--text-md); }
+.feature-points p { margin: var(--space-1) 0 0; color: var(--text-3); font-size: var(--text-sm); max-width: none; }
+
 /* ==========================================================================
    6. Brand devices — the goldfinch, as colour and two shapes. Never a bird.
    ========================================================================== */
@@ -572,4 +699,8 @@ h2.label, h3.label { font-family: var(--font-mono); line-height: var(--leading-n
   .nav-inner > .btn { margin-left: auto; }
   .grid-2 { grid-template-columns: 1fr; gap: var(--space-6); }
   .hero-foot { justify-content: flex-start; }
+  .area-grid, .contact-grid, .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid { gap: var(--space-6); }
+  .feature { padding: var(--space-7) 0; }
+  .phase { grid-template-columns: 40px 1fr; gap: var(--space-4); }
 }
